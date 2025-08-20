@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Product Catalog Tool</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>🛒 Product Catalog Management</h1>
+    </header>
+
+    <div class="container">
+        <!-- Notification Area -->
+        <div id="notification-area" class="mt-4"></div>
+
+        <!-- Category Management Section -->
+        <div class="card">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-600">Define New Product Category</h2>
+            <form id="category-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="category-name" class="form-label">Category Name:</label>
+                    <input type="text" id="category-name" class="form-input" placeholder="e.g., Smartphones, Watches" required>
+                </div>
+                <div>
+                    <label for="category-attributes" class="form-label">Attributes (comma-separated):</label>
+                    <input type="text" id="category-attributes" class="form-input" placeholder="e.g., OS,RAM,Battery Size" required>
+                </div>
+                <div class="md:col-span-2 flex justify-end">
+                    <button type="submit" class="btn-primary">Define Category</button>
+                </div>
+            </form>
+            <hr class="my-6 border-gray-200">
+            <h3 class="text-xl font-semibold mb-3 text-blue-600">Existing Categories</h3>
+            <div id="categories-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Categories will be listed here -->
+            </div>
+        </div>
+
+        <!-- Product Management Section -->
+        <div class="card">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-600">Manage Products</h2>
+            <form id="product-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="product-name" class="form-label">Product Name:</label>
+                    <input type="text" id="product-name" class="form-input" placeholder="e.g., iPhone 15, Rolex Submariner" required>
+                </div>
+                <div>
+                    <label for="product-category" class="form-label">Category:</label>
+                    <select id="product-category" class="form-select" required>
+                        <option value="">-- Select Category --</option>
+                        <!-- Categories will be loaded here dynamically -->
+                    </select>
+                </div>
+                <!-- New: Price input -->
+                <div>
+                    <label for="product-price" class="form-label">Price:</label>
+                    <input type="number" id="product-price" class="form-input" placeholder="e.g., 999.99" step="0.01" min="0" required>
+                </div>
+                <!-- Image URL input -->
+                <div>
+                    <label for="product-image-url" class="form-label">Image URL (optional):</label>
+                    <input type="url" id="product-image-url" class="form-input" placeholder="e.g., https://example.com/image.jpg">
+                </div>
+                <!-- Dynamic Attributes will be inserted here -->
+                <div id="dynamic-attributes" class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                
+                <input type="hidden" id="product-id"> <!-- Hidden field for updating products -->
+
+                <div class="md:col-span-2 flex justify-end space-x-2">
+                    <button type="submit" class="btn-primary" id="save-product-btn">Add Product</button>
+                    <button type="button" class="btn-secondary" id="clear-product-form-btn">Clear Form</button>
+                </div>
+            </form>
+            <hr class="my-6 border-gray-200">
+            <h3 class="text-xl font-semibold mb-3 text-blue-600">Product List</h3>
+            <div class="mb-4">
+                <label for="filter-category" class="form-label">Filter by Category:</label>
+                <select id="filter-category" class="form-select w-auto">
+                    <option value="all">All Categories</option>
+                    <!-- Categories for filtering will be loaded here -->
+                </select>
+            </div>
+            <div id="products-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Products will be listed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Product Catalog Management. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
